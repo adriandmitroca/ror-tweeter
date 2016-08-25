@@ -1,0 +1,24 @@
+<% @user ||= current_user %>
+<h1><%= @user.name %></h1>
+
+<%= render 'shared/follow_form' %>
+
+<div class="stats">
+  <div class="list-group">
+    <a href="#" class="list-group-item disabled">
+    User Statistics
+    </a>
+    <a href="<%= following_user_path(@user) %>" class="list-group-item">
+      <span class="badge">
+        <%= @user.following.count %>
+      </span>
+      Following
+    </a>
+    <a href="<%= followers_user_path(@user) %>" class="list-group-item">
+      <span class="badge">
+        <%= @user.followers.count %>
+      </span>
+      Followers
+    </a>
+  </div>
+</div>

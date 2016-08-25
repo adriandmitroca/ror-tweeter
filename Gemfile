@@ -21,6 +21,7 @@ gem 'autoprefixer-rails'
 
 # Devise for Authentication
 gem 'devise'
+gem 'faker'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'

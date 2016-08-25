@@ -1,0 +1,17 @@
+<div class="well well-sm tweet">
+    <div class="row">
+        <div class="col-sm-9">
+            <%= tweet.body %>
+        </div>
+        <div class="col-sm-3 text-right">
+            <p class="tweet__author">
+                <% if (!tweet.user.nil? && !current_page?(user_path(tweet.user))) %>
+                    <%= link_to tweet.user.name, tweet.user %>
+                <% end %>
+            </p>
+            <p class="tweet__timestamp">
+                <small><%= link_to time_ago_in_words(tweet.created_at) + ' ago', tweet %></small>
+            </p>
+        </div>
+    </div>
+</div>

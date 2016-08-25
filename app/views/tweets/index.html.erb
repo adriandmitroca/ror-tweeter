@@ -1,3 +1,5 @@
+<% provide(:title, @title) %>
+
 <div class="row">
     <div class="col-sm-8">
         <h1>Your Feed</h1>
@@ -26,23 +28,11 @@
             <% end %>
         <% end %>
 
-
-        <% @tweets.each do |tweet| %>
-            <div class="well well-sm tweet">
-                <div class="row">
-                    <div class="col-sm-9">
-                        <%= tweet.body %>
-                    </div>
-                    <div class="col-sm-3 text-right">
-                        <p class="tweet__author">
-                            <%= !tweet.user.nil? ? "@" + tweet.user.name : nil %>
-                        </p>
-                        <p class="tweet__timestamp">
-                            <%= link_to localize(tweet.created_at, :format => :long), tweet %>
-                        </p>
-                    </div>
-                </div>
-            </div>
+        <%= render @tweets %>
+    </div>
+    <div class="col-sm-4">
+        <% if user_signed_in? %>
+            <%= render 'shared/user_stats' %>
         <% end %>
     </div>
 </div>

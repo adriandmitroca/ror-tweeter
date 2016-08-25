@@ -2,7 +2,8 @@ class TweetsController < ApplicationController
     before_action :authenticate_user!, only: [:create]
 
     def index
-        @tweets = Tweet.includes(:user).order(created_at: :desc)
+        @title = user_signed_in? ? 'Your Feed' : 'All Tweets'
+        @tweets = user_signed_in? ? current_user.feed : Tweet.includes(:user).order(created_at: :desc)
         @tweet = Tweet.new
     end
 
@@ -16,7 +17,8 @@ class TweetsController < ApplicationController
         if @tweet.save
             redirect_to tweets_path
         else
-            @tweets = Tweet.order(created_at: :desc)
+            @title = user_signed_in? ? 'Your Feed' : 'All Tweets'
+            @tweets = user_signed_in? ? current_user.feed : Tweet.includes(:user).order(created_at: :desc)
             render 'index'
         end
     end
