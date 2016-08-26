@@ -1,0 +1,13 @@
+- provide(:title, @user.name)
+.row
+  %aside.col-md-4
+    %section.stats
+      = render 'shared/user_stats'
+  .col-md-8
+    %h3
+      Tweets (#{@user.tweets.count})
+    - if @user.tweets.any?
+      - @user.tweets.each do |tweet|
+        = render tweet
+    - else
+      %h2 This user haven't tweeted yet.

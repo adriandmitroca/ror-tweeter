@@ -1,0 +1,11 @@
+%p.lead
+  Tweet by #{"@" + @tweet.user.name}
+.well.well-sm.tweet
+  .row
+    .col-sm-9
+      = @tweet.body
+    .col-sm-3.text-right
+      %p.tweet__author
+        = "@" + @tweet.user.name
+      %p.tweet__timestamp
+        = link_to localize(@tweet.created_at, :format => :long), @tweet

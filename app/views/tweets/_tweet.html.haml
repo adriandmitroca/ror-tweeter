@@ -1,0 +1,10 @@
+.well.well-sm.tweet
+  .row
+    .col-sm-9
+      = tweet.body
+    .col-sm-3.text-right
+      %p.tweet__author
+        - if (!tweet.user.nil? && !current_page?(user_path(tweet.user)))
+          = link_to tweet.user.name, tweet.user
+      %p.tweet__timestamp
+        %small= link_to time_ago_in_words(tweet.created_at) + ' ago', tweet

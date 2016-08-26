@@ -1,0 +1,15 @@
+- @user ||= current_user
+%h1= @user.name
+= render 'shared/follow_form'
+.stats
+  .list-group
+    %a.list-group-item.disabled{:href => "#"}
+      User Statistics
+    %a.list-group-item{:href => "#{following_user_path(@user)}"}
+      %span.badge
+        = @user.following.count
+      Following
+    %a.list-group-item{:href => "#{followers_user_path(@user)}"}
+      %span.badge
+        = @user.followers.count
+      Followers
